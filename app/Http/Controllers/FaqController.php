@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Faq;
 use Faker\Provider\Lorem;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,10 @@ class FaqController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        $faq = Faq::all();
+        return view('faq.index', [
+            'data' => $faq
+        ]);
     }
 
     /**
@@ -24,7 +28,7 @@ class FaqController extends Controller
      */
     public function create()
     {
-        return view('create');
+        return view('faq.create');
     }
 
     /**
@@ -33,9 +37,14 @@ class FaqController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
-        return redirect('/');
+        Faq::create([
+            'question' => $request->input('question'),
+            'answer' => $request->input('answer')
+        ]);
+
+        return redirect('faq/create')->with('success', 'Successfully added!');
     }
 
     /**
@@ -55,11 +64,13 @@ class FaqController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Faq $faq)
     {
-        $que = "explicabo consequuntur unde expedita quia sed perspiciatis?";
-        $ans = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, harum molestiae. Voluptas labore a expedita vitae fugit delectus veritatis dolore molestias ullam at est animi culpa incidunt, tenetur eius eaque.";
-        return view('create', ['id'=>$id, 'que'=>$que, 'ans'=>$ans]);
+        return view('faq.create', [
+            'id' => $faq->id,
+            'que' => $faq->question,
+            'ans' => $faq->answer
+        ]);
     }
 
     /**
@@ -69,9 +80,14 @@ class FaqController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Faq $faq)
     {
-        return redirect('/');
+        $faq->update([
+            'question' => $request->input('question'),
+            'answer' => $request->input('answer')
+        ]);
+
+        return redirect('faq')->with('success', 'Successfully updated!');
     }
 
     /**

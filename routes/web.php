@@ -15,12 +15,10 @@ use App\Http\Controllers\FaqController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('home');
+});
 
 Auth::routes();
 
-Route::get('/{id}/edit', [FaqController::class, 'edit']);
-Route::put('/{id}', [FaqController::class, 'update']);
-Route::resource('/', FaqController::class);
+Route::resource('/faq', FaqController::class);
