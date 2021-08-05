@@ -9,7 +9,18 @@
             </p>
             <p class="lead">
                 <a href="/faq" class="btn btn-lg btn-info">View</a>
-                <a href="/login" class="btn btn-lg btn-success">Login</a>
+                @if (Auth::id())
+                    <a class="btn btn-lg btn-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                                         document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                @else
+                    <a href="/login" class="btn btn-lg btn-success">Login</a>
+                @endif
             </p>
         </main>
         <footer class="mastfoot mt-auto">
