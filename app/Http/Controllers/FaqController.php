@@ -43,6 +43,10 @@ class FaqController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'question' => 'required',
+            'answer' => 'required',
+        ]);
         Faq::create([
             'question' => $request->input('question'),
             'answer' => $request->input('answer')
@@ -86,6 +90,10 @@ class FaqController extends Controller
      */
     public function update(Request $request,Faq $faq)
     {
+        $request->validate([
+            'question' => 'required',
+            'answer' => 'required',
+        ]);
         $faq->update([
             'question' => $request->input('question'),
             'answer' => $request->input('answer')
@@ -102,6 +110,7 @@ class FaqController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Faq::find($id)->delete();
+        return redirect('/faq');
     }
 }
