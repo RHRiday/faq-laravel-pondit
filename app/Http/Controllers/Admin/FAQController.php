@@ -11,21 +11,22 @@ class FAQController extends Controller
     public function index()
     {
         $count = count(FAQ::all());
-        return view('Admin.home.home', compact('count'));
+        return view('Admin.index', compact('count'));
     }
 
-    public function faq_manage()
+    public function manage()
     {
-        $faqs = FAQ::orderBy('priority', 'ASC')
-            ->get();
-        return view('Admin.manage_faq.manage_faq', ['faqs' => $faqs]);
+        $faqs = FAQ::orderBy('priority', 'ASC')->get();
+        return view('Admin.manage', [
+            'faqs' => $faqs
+        ]);
     }
 
     public function faq_add(Request $request)
     {
 
         if (FAQ::where('priority', $request->priority)->first()) {
-            return redirect('/manage_faq')->with('error', 'FAQ Does not save,This priority already exist!!');
+            return redirect('/home/manage')->with('error', 'err');
 
         } else {
             $faq = new FAQ();
@@ -34,7 +35,7 @@ class FAQController extends Controller
             $faq->priority = $request->priority;
             $faq->publication_status = $request->publication_status;
             $faq->save();
-            return redirect('/manage_faq')->with('save', 'FAQ Save Successfully');
+            return redirect('/home/manage')->with('save', 'FAQ Save Successfully');
         }
     }
 
@@ -68,7 +69,7 @@ class FAQController extends Controller
         $faq->priority = $request->priority;
         $faq->publication_status = $request->publication_status;
         $faq->save();
-        return redirect('/manage_faq')->with('update', 'FAQ Update Successfully');
+        return redirect('/home/manage')->with('update', 'FAQ Update Successfully');
     }
 
 
@@ -77,7 +78,7 @@ class FAQController extends Controller
 
         $faq = FAQ::find($id);
         $faq->delete();
-        return redirect('/manage_faq')->with('delete', 'Delete Successfully');
+        return redirect('/home/manage')->with('delete', 'Delete Successfully');
     }
 
     public function unpublished_faq($id)
@@ -86,7 +87,7 @@ class FAQController extends Controller
         $faq = FAQ::find($id);
         $faq->publication_status = 0;
         $faq->save();
-        return redirect('/manage_faq')->with('unPublish', 'FAQ Unpublished Successfully');
+        return redirect('/home/manage')->with('unPublish', 'FAQ Unpublished Successfully');
     }
 
     public function published_faq($id)
@@ -95,7 +96,7 @@ class FAQController extends Controller
         $faq = FAQ::find($id);
         $faq->publication_status = 1;
         $faq->save();
-        return redirect('/manage_faq')->with('publish', 'FAQ Published Successfully');
+        return redirect('/home/manage')->with('publish', 'FAQ Published Successfully');
     }
 
 

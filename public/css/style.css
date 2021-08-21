@@ -13,16 +13,11 @@
     color: black;
 }
 .header_col_a1:hover{
-    background-color: rgb(71, 203, 255);
-}
-.header_col_a2{
-    color:black;
-    background-color:rgb(71, 203, 255);
+    background-color: #4752ff;
+    color: whitesmoke;
 }
 .tob_bar{
     background-color: #4752ff;
-    padding-bottom: 80px;
-    padding-top: 20px;
 }
 .my_h1{
     color: white;
@@ -30,10 +25,7 @@
 }
 .search_form{
     margin-top: 20px;
-    padding: 20px;
     font-family: FontAwesome, Arial;
-    font-style: normal;
-    font-size: 15px;
 }
 .my_content{
     background-color: white;
