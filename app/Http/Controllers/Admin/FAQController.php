@@ -16,13 +16,13 @@ class FAQController extends Controller
     public function index()
     {
         $count = count(FAQ::all());
-        return view('Admin.index', compact('count'));
+        return view('admin.index', compact('count'));
     }
 
     public function manage()
     {
         $faqs = FAQ::orderBy('priority', 'ASC')->get();
-        return view('Admin.manage', [
+        return view('admin.manage', [
             'faqs' => $faqs
         ]);
     }
