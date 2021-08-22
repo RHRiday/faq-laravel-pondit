@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>PONDITs FAQ</title>
 
-    {{--Styles file included--}}
+    {{-- Styles file included --}}
     @include('layouts.partials.style')
 
     <style>
         body {
             overflow-x: hidden;
         }
+
     </style>
 
 </head>
 
 <body>
     <div class="container">
-        {{--Header file included--}}
+        {{-- Header file included --}}
         @include('layouts.partials.header')
     </div>
 
@@ -28,7 +30,7 @@
         </div>
         <div class="col-10 col-md-6 mx-auto">
             <input type="text" id="search" class="form-control search_form p-md-4"
-                   placeholder="&#xf002; Search for questions...">
+                placeholder="&#xf002; Search for questions...">
         </div>
     </div>
 
@@ -36,19 +38,20 @@
         <div class="col-md-12">
             <div class="container">
                 <div class="row" style="margin-top: 30px">
-                    {{--Sidebar included--}}
+                    {{-- Sidebar included --}}
                     {{-- @include('view.layouts.partials.sidebar') --}}
 
-                    {{--Main Component Body--}}
-                    {{$slot}}
+                    {{-- Main Component Body --}}
+                    {{ $slot }}
                 </div>
             </div>
         </div>
     </div>
 
-    {{--Footer included--}}
+    {{-- Footer included --}}
     @include('layouts.partials.footer')
 
 
 </body>
+
 </html>

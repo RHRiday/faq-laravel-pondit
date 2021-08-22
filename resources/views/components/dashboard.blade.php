@@ -11,14 +11,14 @@
 
 </head>
 
-<body>
+<body style="overflow-y: hidden">
 
-<div id="wrapper">
+<div id="wrapper" style="overflow: hidden">
     {{--Navbar included--}}
     @include('admin.partials.navbar')
 
     <div id="page-wrapper">
-        <div class="row">
+        <div class="row" style="height: 100vh; overflow-x: hidden; overflow-y:scroll">
             <div class="col-12">
                 {{--Main Component Body--}}
                 {{$slot}}
