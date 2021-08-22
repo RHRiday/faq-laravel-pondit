@@ -17,8 +17,8 @@ class CreateFAQSTable extends Migration
             $table->id();
             $table->text('question');
             $table->text('answer');
-            $table->text('priority');
-            $table->text('publication_status');
+            $table->integer('priority');
+            $table->integer('publication_status');
             $table->timestamps();
         });
     }

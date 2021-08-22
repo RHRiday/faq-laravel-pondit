@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\FAQController;
 use App\Http\Controllers\View\ViewController;
+use Illuminate\Support\Facades\Auth;
 
 //=============View site=================
 
@@ -11,7 +12,7 @@ Route::get('/', [ViewController::class, 'index']);
 // Route::get('/search-faq/{search}', [ViewController::class, 'faq_search']);
 
 //=============Admin site=================
-
+Auth::routes();
 Route::get('/home', [FAQController::class, 'index']);
 Route::get('/home/manage', [FAQController::class, 'manage']);
 

@@ -3,6 +3,6 @@
         <h2>PONDITs FAQ</h2>
     </div>
     <div class="col-auto float-right">
-        <a href="#" class="btn header_col_a1"><b>Sign in</b></a>
+        <a href="/login" class="btn header_col_a1"><b>Sign in</b></a>
     </div>
 </div>

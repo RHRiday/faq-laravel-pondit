@@ -11,7 +11,13 @@
         <a href="#" class="btn text-center contact">Contact Us</a>
     </div>
 </div>
-
+<footer class="mastfoot mt-auto">
+    <div class="flex justify-center sm:items-center sm:justify-between">
+        <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
+            Made by Rifat &copy; PONDITS
+        </div>
+    </div>
+</footer>
 
 {{--Scripts file included--}}
 @include('layouts.partials.script')
